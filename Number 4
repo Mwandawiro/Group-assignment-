@@ -1,0 +1,99 @@
+from collections import defaultdict
+from queue import PriorityQueue
+
+
+
+#UCS
+class Graph:
+    def __init__(self, directed):
+        """Parametrized constructor of class Graph which takes True if Graph is directed otherwise it takes False"""
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def add_edge(self, u, v, weight):
+        """Add Edges between two nodes along with weight as Algorithm is of UCS"""
+        if self.directed:
+            value = (weight, v)
+            self.graph[u].append(value)
+        else:
+            value = (weight, v)
+            self.graph[u].append(value)
+            value = (weight, u)
+            self.graph[v].append(value)
+
+    def ucs(self, current_node, goal_node):
+        """It takes starting node and goal node as parameters then it returns a path using Uniform Cost Search Algorithm"""
+        visited = []
+        queue = PriorityQueue()
+        queue.put((0, current_node))
+
+        while not queue.empty():
+            item = queue.get()
+            current_node = item[1]
+
+            if current_node == goal_node:
+                print(current_node, end=" ")
+                queue.queue.clear()
+            else:
+                if current_node in visited:
+                    continue
+
+                print(current_node, end=" ")
+                visited.append(current_node)
+
+                for neighbour in self.graph[current_node]:
+                    queue.put((neighbour[0], neighbour[1]))
+
+
+g = Graph(False)
+
+g.graph = defaultdict(list)
+
+g.add_edge('Sports Complex', 'Indigo', 172)
+g.add_edge('Sports Complex', 'Red', 105)
+g.add_edge('Sports Complex', 'Blue', 146)
+g.add_edge('Indigo', 'Almond', 109)
+g.add_edge('Indigo', 'Black', 102)
+g.add_edge('Blue', 'Green', 152)
+g.add_edge('Blue', 'Red', 146)
+g.add_edge('Red', 'Green', 110)
+g.add_edge('Red', 'Almond', 133)
+g.add_edge('Black', 'Purple', 171)
+g.add_edge('Black', 'Brown', 126)
+g.add_edge('Almond', 'Brown', 43)
+g.add_edge('Almond', 'Orange', 151)
+g.add_edge('Green', 'Orange', 97)
+g.add_edge('Brown', 'Orange', 136)
+g.add_edge('Brown', 'Emarald', 200)
+g.add_edge('Brown', 'Maroon', 111)
+g.add_edge('Orange', 'Emarald', 100)
+g.add_edge('Purple', 'Pink', 171)
+g.add_edge('Pink', 'Black', 140)
+g.add_edge('Pink', 'Brown', 123)
+g.add_edge('Maroon', 'Pink', 88)
+g.add_edge('Maroon', 'Grey', 130)
+g.add_edge('Pink', 'Grey', 99)
+g.add_edge('Grey', 'White', 80)
+g.add_edge('Emarald', 'White', 67)
+
+
+g.graph = defaultdict(list,
+                      {
+                        'Sports Compex': [(172, 'Indigo'), (146, 'Blue'), (105, 'Red')],
+                        'Blue': [(146, 'Red'), (152, 'Green')],
+                        'Indigo': [(109, 'Almond'), (102, 'Black')],
+                        'Red': [(133, 'Almond'), (110, 'Green')],
+                        'Almond': [(151, 'Orange'), (43, 'Brown')],
+                        'Green': [(97, 'Orange')],
+                        'Brown': [(136, 'Orange'), (200, 'Emarald'), (111, 'Maroon')],
+                        'Black': [(126, 'Brown'), (171, 'Purple')],
+                        'Purple': [(171, 'Pink')],
+                        'Pink': [(123, 'Brown'), (140, 'Black'), (99, 'Grey')],
+                        'Maroon': [(88, 'Pink'), (130, 'Grey')],
+                        'Grey': [(80, 'White')],
+                        'Orange': [(100, 'Emarald')],
+                        'White': None,
+                        'Emarald': [(67, 'White')]})
+
+print("1. Uniform Cost Search: ",end=" ")
+g.ucs('Sports Complex', 'Parking lot')
