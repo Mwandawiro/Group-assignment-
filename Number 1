@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    },
+    "kernelspec": {
+      "name": "python",
+      "display_name": "Python (Pyodide)",
+      "language": "python"
+    }
+  },
+  "nbformat_minor": 4,
+  "nbformat": 4,
+  "cells": [
+    {
+      "cell_type": "code",
+      "source": "# GROUP 6 AI",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "import networkx as nx\nimport matplotlib.pyplot as plt",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "g = nx.Graph()\nnodes=[\"SportsComplex\",\"Siwaka\",\"Ph.1A\",\"Ph.1B\",\"Phase2\",\"J1\",\"Mada\",\"STC\",\"Phase3\",\"Parking Lot\"]",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "g.add_node(\"SportsComplex\")\ng.add_node(\"Siwaka\")\ng.add_node(\"Ph.1A\")\ng.add_node(\"Ph.1B\")\ng.add_node(\"Phase2\")\ng.add_node(\"J1\")\ng.add_node(\"Mada\")\ng.add_node(\"STC\")\ng.add_node(\"Phase3\")\ng.add_node(\"Parking Lot\")",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "g.add_edge(\"SportsComplex\",\"Siwaka\",weight=\"450\")\ng.add_edge(\"Siwaka\",\"Ph.1A\",weight=\"10\")\ng.add_edge(\"Siwaka\",\"Ph.1B\",weight=\"230\")\ng.add_edge(\"Ph.1A\",\"Ph.1B\",weight=\"100\")\ng.add_edge(\"Ph.1B\",\"STC\",weight=\"50\")\ng.add_edge(\"Ph.1A\",\"Mada\",weight=\"850\")\ng.add_edge(\"Ph.1B\",\"Phase2\",weight=\"112\")\ng.add_edge(\"STC\",\"Phase2\",weight=\"50\")\ng.add_edge(\"STC\",\"Parking Lot\",weight=\"250\")\ng.add_edge(\"Phase2\",\"Phase3\",weight=\"500\")\ng.add_edge(\"Phase2\",\"J1\",weight=\"600\")\ng.add_edge(\"J1\",\"Mada\",weight=\"200\")\ng.add_edge(\"Phase3\",\"Parking Lot\",weight=\"350\")\ng.add_edge(\"Mada\",\"Parking Lot\",weight=\"700\")",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "nx.draw(g, node_size =8000, with_labels = True,)\nplt.savefig(\"filename.png\")",
+      "metadata": {
+        "trusted": true
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": "",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
